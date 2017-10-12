@@ -1,0 +1,148 @@
+.container {
+  width: 100%;
+  max-width: 1500px;
+  background: $bg-color;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .form {
+    width: 200px;
+    padding: 3em 1em;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+
+    .findCountry {
+      width: 100%;
+      padding: .6em;
+      text-align: center;
+      outline: none;
+      color: black;
+      border: none;
+      &:focus {
+        box-shadow: 0 0 5px 1px $land-color-hover;
+      }
+
+    }
+
+    .button {
+      width: 100%;
+      transition: 300ms;
+      background: $land-color;
+      border: 1px solid $land-color-active;
+      margin-top: .5em;
+      padding: .5em;
+      outline: none;
+
+      &:hover {
+        background: $land-color-hover;
+      }
+
+      &:focus {
+        background: $land-color-hover;
+        box-shadow: 0 0 1px 1px $land-color-active;
+      }
+    }
+  }
+  .svg {
+    margin: 1em 0;
+    transition: 2s;
+    display: flex;
+    justify-content: center;
+    width: 1009px;
+    height: 665px;
+    .land{
+      transition: 300ms;
+      fill: $land-color;
+			fill-opacity: 1;
+			stroke: $bg-color;
+			stroke-opacity: 1;
+			stroke-width: .5;
+      &:hover {
+        fill: $land-color-hover;
+
+      }
+    }
+
+    .colorFill {
+      fill: $land-color-active;
+
+      &:hover {
+        fill: $land-color-active;
+      }
+    }
+  }
+
+
+  .information {
+    position: absolute;
+    transition: 1s;
+    left: -90%;
+    visibility: hidden;
+    top: 50%;
+    width: 90%;
+    border: 1px solid $bg-color;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    background-color: $land-color;
+
+    &:hover {
+      transform: translate(100%, 0);
+      visibility: visible;
+    }
+
+    &::before {
+      content: 'Info';
+      position: absolute;
+      visibility: visible;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $land-color-active;
+      right: -50px;
+    }
+
+    th,
+    td {
+      text-align: center;
+      color: $bg-color;
+      width: 50px;
+      height: 50px;
+      border: 1px solid $bg-color;
+      padding: .5em;
+      font-size: 1.2em;
+
+      .flag {
+        height: 300%;
+        border: 1px solid $bg-color;
+      }
+    }
+
+    td {
+      &:hover {
+        background-color: $land-color-active;
+      }
+    }
+
+    thead {
+      background-color: $land-color-active;
+      th {
+        border: none;
+        font-size: 2em;
+      }
+    }
+
+    tbody {
+      th {
+        background-color: $land-color-hover;
+        font-size: 1.5em;
+      }
+    }
+  }
+
+
+}
