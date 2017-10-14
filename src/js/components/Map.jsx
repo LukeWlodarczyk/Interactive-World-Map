@@ -32,17 +32,20 @@ class Map extends React.Component{
         if(path !== null){
           const pathId=path.id;
           path.classList.add('colorFill');
+          event.target.classList.remove('error');
           this.setState({
               id: pathId,
               render: true
           })
+        } else {
+          event.target.classList.add('error');
         }
 
 
     }
 
    handleClearBtn = event => {
-       event.preventDefault();
+    event.preventDefault();
     if (this.state.id.length !== 0){
       const pathColor=document.querySelector(`path[id=${this.state.id}]`);
       pathColor.classList.remove('colorFill');

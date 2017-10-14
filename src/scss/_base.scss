@@ -27,6 +27,19 @@
 
     }
 
+    .error {
+      &::after {
+        content: 'Country not found :( ';
+        color: $land-color-active;
+        border: 1px solid $land-color-active;
+        width: 100%;
+        padding: .3em;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    }
+
     .button {
       width: 100%;
       transition: 300ms;

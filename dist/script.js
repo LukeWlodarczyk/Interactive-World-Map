@@ -22163,10 +22163,13 @@ var Map = function (_React$Component) {
             if (path !== null) {
                 var pathId = path.id;
                 path.classList.add('colorFill');
+                event.target.classList.remove('error');
                 _this.setState({
                     id: pathId,
                     render: true
                 });
+            } else {
+                event.target.classList.add('error');
             }
         };
 
