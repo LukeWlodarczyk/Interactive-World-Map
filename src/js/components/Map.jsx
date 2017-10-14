@@ -28,7 +28,8 @@ class Map extends React.Component{
         event.preventDefault()
 
         const path=document.querySelector(`path[title="${this.state.name}"]`);
-        if(path.id !== null){
+
+        if(path !== null){
           const pathId=path.id;
           path.classList.add('colorFill');
           this.setState({
@@ -42,7 +43,7 @@ class Map extends React.Component{
 
    handleClearBtn = event => {
        event.preventDefault();
-    if (this.state.id != null){
+    if (this.state.id.length !== 0){
       const pathColor=document.querySelector(`path[id=${this.state.id}]`);
       pathColor.classList.remove('colorFill');
     }
@@ -64,16 +65,19 @@ class Map extends React.Component{
         }
 
     }
+
     handleMapCLick = event => {
         event.preventDefault();
 
         const countryName = event.target.getAttribute('title');
-        const path = document.querySelector(`path[title="${countryName}"]`);
-        path.classList.add('colorFill');
-        this.setState({
-            id: path.id,
-            render: true,
-        });
+        if(countryName !== null) {
+          const path = document.querySelector(`path[title="${countryName}"]`);
+          path.classList.add('colorFill');
+          this.setState({
+              id: path.id,
+              render: true,
+          });
+        }
     };
 
 

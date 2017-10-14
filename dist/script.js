@@ -22159,7 +22159,8 @@ var Map = function (_React$Component) {
             event.preventDefault();
 
             var path = document.querySelector('path[title="' + _this.state.name + '"]');
-            if (path.id !== null) {
+
+            if (path !== null) {
                 var pathId = path.id;
                 path.classList.add('colorFill');
                 _this.setState({
@@ -22171,7 +22172,7 @@ var Map = function (_React$Component) {
 
         _this.handleClearBtn = function (event) {
             event.preventDefault();
-            if (_this.state.id != null) {
+            if (_this.state.id.length !== 0) {
                 var pathColor = document.querySelector('path[id=' + _this.state.id + ']');
                 pathColor.classList.remove('colorFill');
             }
@@ -22181,12 +22182,14 @@ var Map = function (_React$Component) {
             event.preventDefault();
 
             var countryName = event.target.getAttribute('title');
-            var path = document.querySelector('path[title="' + countryName + '"]');
-            path.classList.add('colorFill');
-            _this.setState({
-                id: path.id,
-                render: true
-            });
+            if (countryName !== null) {
+                var path = document.querySelector('path[title="' + countryName + '"]');
+                path.classList.add('colorFill');
+                _this.setState({
+                    id: path.id,
+                    render: true
+                });
+            }
         };
 
         _this.state = {
