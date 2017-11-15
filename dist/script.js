@@ -22139,137 +22139,133 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Map = function (_React$Component) {
-    _inherits(Map, _React$Component);
+  _inherits(Map, _React$Component);
 
-    function Map(props) {
-        _classCallCheck(this, Map);
+  function Map(props) {
+    _classCallCheck(this, Map);
 
-        var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
-        _this.handleNameChange = function (event) {
+    _this.handleNameChange = function (event) {
 
-            _this.setState({
-                name: event.target.value.toLowerCase(),
-                render: false
-            });
-        };
+      _this.setState({
+        name: event.target.value.toLowerCase(),
+        render: false
+      });
+    };
 
-        _this.handleBtnClick = function (event) {
+    _this.handleBtnClick = function (event) {
 
-            event.preventDefault();
+      event.preventDefault();
 
-            var path = document.querySelector('path[title="' + _this.state.name + '"]');
+      var path = document.querySelector('path[title="' + _this.state.name + '"]');
 
-            if (path !== null) {
-                var pathId = path.id;
-                path.classList.add('colorFill');
-                event.target.classList.remove('error');
-                _this.setState({
-                    id: pathId,
-                    render: true
-                });
-            } else {
-                event.target.classList.add('error');
-            }
-        };
+      if (path !== null) {
+        var pathId = path.id;
+        path.classList.add('colorFill');
+        event.target.classList.remove('error');
+        _this.setState({
+          id: pathId,
+          render: true
+        });
+      } else {
+        event.target.classList.add('error');
+      }
+    };
 
-        _this.handleClearBtn = function (event) {
-            event.preventDefault();
-            if (_this.state.id.length !== 0) {
-                var pathColor = document.querySelector('path[id=' + _this.state.id + ']');
-                pathColor.classList.remove('colorFill');
-            }
+    _this.handleClearBtn = function (event) {
+      event.preventDefault();
+      if (_this.state.id.length !== 0) {
+        var pathColor = document.querySelector('path[id=' + _this.state.id + ']');
+        pathColor.classList.remove('colorFill');
+      }
+    };
 
-            _this.setState({
-                name: ''
-            });
-        };
+    _this.handleMapClick = function (event) {
+      event.preventDefault();
 
-        _this.handleMapClick = function (event) {
-            event.preventDefault();
+      var countryName = event.target.getAttribute('title');
 
-            var countryName = event.target.getAttribute('title');
+      if (countryName !== null) {
+        var path = document.querySelector('path[title="' + countryName + '"]');
+        path.classList.add('colorFill');
+        _this.setState({
+          id: path.id,
+          render: true
+        });
+      }
+    };
 
-            if (countryName !== null) {
-                var path = document.querySelector('path[title="' + countryName + '"]');
-                path.classList.add('colorFill');
-                _this.setState({
-                    id: path.id,
-                    render: true
-                });
-            }
-        };
+    _this.state = {
+      name: '',
+      id: '',
+      render: false
+    };
 
-        _this.state = {
-            name: '',
-            id: '',
-            render: false
-        };
+    return _this;
+  }
 
-        return _this;
+  _createClass(Map, [{
+    key: 'renamePathIdTitle',
+    value: function renamePathIdTitle() {
+      var paths = document.querySelectorAll('path');
+      paths.forEach(function (path) {
+        path.setAttribute('id', path.getAttribute('id').toLowerCase());
+        path.setAttribute('title', path.getAttribute('title').toLowerCase());
+      });
+
+      if (this.state.id) {
+        console.log(this.state.id);
+        var path = document.querySelector('path#' + this.state.id);
+        path.classList.add('colorFill');
+      }
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(Map, [{
-        key: 'renamePathIdTitle',
-        value: function renamePathIdTitle() {
-            var paths = document.querySelectorAll('path');
-            paths.forEach(function (path) {
-                path.setAttribute('id', path.getAttribute('id').toLowerCase());
-                path.setAttribute('title', path.getAttribute('title').toLowerCase());
-            });
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          'form',
+          { className: 'form' },
+          _react2.default.createElement('input', {
+            className: 'findCountry',
+            type: 'text',
+            placeholder: 'Type in country name',
+            value: this.state.name,
+            onChange: this.handleNameChange
+          }),
+          _react2.default.createElement(
+            'button',
+            { className: 'button', onClick: this.handleBtnClick, type: 'submit', value: 'Submit' },
+            'Find country'
+          ),
+          _react2.default.createElement(
+            'button',
+            { className: 'button', onClick: this.handleClearBtn },
+            'Clear map'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'map', onClick: this.handleMapClick },
+          _react2.default.createElement(_reactSvg2.default, {
+            path: './src/world-map/worldHigh.svg',
+            callback: function callback(svg) {
+              return _this2.renamePathIdTitle();
+            },
+            className: 'svg'
+          })
+        ),
+        this.state.render && _react2.default.createElement(_Information2.default, { id: this.state.id })
+      );
+    }
+  }]);
 
-            if (this.state.id) {
-                console.log(this.state.id);
-                var path = document.querySelector('path#' + this.state.id);
-                path.classList.add('colorFill');
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                { className: 'container' },
-                _react2.default.createElement(
-                    'form',
-                    { className: 'form' },
-                    _react2.default.createElement('input', {
-                        className: 'findCountry',
-                        type: 'text',
-                        placeholder: 'Type in country name',
-                        value: this.state.name,
-                        onChange: this.handleNameChange
-                    }),
-                    _react2.default.createElement(
-                        'button',
-                        { className: 'button', onClick: this.handleBtnClick, type: 'submit', value: 'Submit' },
-                        'Find country'
-                    ),
-                    _react2.default.createElement(
-                        'button',
-                        { className: 'button', onClick: this.handleClearBtn },
-                        'Clear map'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'map', onClick: this.handleMapClick },
-                    _react2.default.createElement(_reactSvg2.default, {
-                        path: './src/world-map/worldHigh.svg',
-                        callback: function callback(svg) {
-                            return _this2.renamePathIdTitle();
-                        },
-                        className: 'svg'
-                    })
-                ),
-                this.state.render && _react2.default.createElement(_Information2.default, { id: this.state.id })
-            );
-        }
-    }]);
-
-    return Map;
+  return Map;
 }(_react2.default.Component);
 
 module.exports = Map;

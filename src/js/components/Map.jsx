@@ -51,10 +51,6 @@ class Map extends React.Component{
       pathColor.classList.remove('colorFill');
     }
 
-    this.setState({
-        name: '',
-    })
-
 
   }
 
