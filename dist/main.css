@@ -38,8 +38,8 @@ canvas {
       width: 100%;
       padding: .3em;
       position: absolute;
-      top: 0px;
-      left: 0px; }
+      top: 0;
+      left: 0; }
     .container .form .button {
       width: 100%;
       transition: 300ms;

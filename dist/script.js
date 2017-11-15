@@ -22181,10 +22181,11 @@ var Map = function (_React$Component) {
             }
         };
 
-        _this.handleMapCLick = function (event) {
+        _this.handleMapClick = function (event) {
             event.preventDefault();
 
             var countryName = event.target.getAttribute('title');
+
             if (countryName !== null) {
                 var path = document.querySelector('path[title="' + countryName + '"]');
                 path.classList.add('colorFill');
@@ -22250,7 +22251,7 @@ var Map = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'map', onClick: this.handleMapCLick },
+                    { className: 'map', onClick: this.handleMapClick },
                     _react2.default.createElement(_reactSvg2.default, {
                         path: './src/world-map/worldHigh.svg',
                         callback: function callback(svg) {

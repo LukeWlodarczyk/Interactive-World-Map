@@ -51,8 +51,13 @@ class Map extends React.Component{
       pathColor.classList.remove('colorFill');
     }
 
+    this.setState({
+        name: '',
+        render: false
+    })
 
-    }
+
+  }
 
     renamePathIdTitle() {
         const paths = document.querySelectorAll('path');
@@ -69,10 +74,11 @@ class Map extends React.Component{
 
     }
 
-    handleMapCLick = event => {
+    handleMapClick = event => {
         event.preventDefault();
 
         const countryName = event.target.getAttribute('title');
+
         if(countryName !== null) {
           const path = document.querySelector(`path[title="${countryName}"]`);
           path.classList.add('colorFill');
@@ -101,7 +107,7 @@ class Map extends React.Component{
                     </button>
                     <button className='button' onClick={this.handleClearBtn}>Clear map</button>
                   </form>
-                  <div className='map' onClick={this.handleMapCLick}>
+                  <div className='map' onClick={this.handleMapClick}>
                     <ReactSVG
                       path="./src/world-map/worldHigh.svg"
                       callback={svg => this.renamePathIdTitle()}
