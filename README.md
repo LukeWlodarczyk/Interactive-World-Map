@@ -1,6 +1,6 @@
 # Interactive-World-Map
 
-https://lukewlodarczyk.github.io/Interactive-World-Map/
+Site is published at https://lukewlodarczyk.github.io/Interactive-World-Map/
 
 ## technologies used:
 * ES6
