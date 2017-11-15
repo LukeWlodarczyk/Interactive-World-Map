@@ -1,10 +1,16 @@
+body {
+  background: $bg-color;
+}
+
 .container {
+  position: relative;
   width: 100%;
   max-width: 1500px;
   background: $bg-color;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 0 auto;
 
   .form {
     width: 200px;
@@ -50,6 +56,7 @@
       outline: none;
 
       &:hover {
+        cursor: pointer;
         background: $land-color-hover;
       }
 
@@ -74,6 +81,7 @@
 			stroke-opacity: 1;
 			stroke-width: .5;
       &:hover {
+        cursor: pointer;
         fill: $land-color-hover;
 
       }
@@ -83,6 +91,7 @@
       fill: $land-color-active;
 
       &:hover {
+        cursor: pointer;
         fill: $land-color-active;
       }
     }

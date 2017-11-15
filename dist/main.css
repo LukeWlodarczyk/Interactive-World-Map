@@ -8,13 +8,18 @@ video,
 canvas {
   max-width: 100%; }
 
+body {
+  background: #0d002c; }
+
 .container {
+  position: relative;
   width: 100%;
   max-width: 1500px;
   background: #0d002c;
   display: flex;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  margin: 0 auto; }
   .container .form {
     width: 200px;
     padding: 3em 1em;
@@ -49,6 +54,7 @@ canvas {
       padding: .5em;
       outline: none; }
       .container .form .button:hover {
+        cursor: pointer;
         background: #aa341d; }
       .container .form .button:focus {
         background: #aa341d;
@@ -68,10 +74,12 @@ canvas {
       stroke-opacity: 1;
       stroke-width: .5; }
       .container .svg .land:hover {
+        cursor: pointer;
         fill: #aa341d; }
     .container .svg .colorFill {
       fill: #961c05; }
       .container .svg .colorFill:hover {
+        cursor: pointer;
         fill: #961c05; }
   .container .information {
     position: absolute;
