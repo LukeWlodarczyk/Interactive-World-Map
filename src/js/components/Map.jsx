@@ -53,7 +53,6 @@ class Map extends React.Component{
 
     this.setState({
         name: '',
-        render: false
     })
 
 
